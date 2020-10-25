@@ -46,6 +46,8 @@ public class userTabActivity extends AppCompatActivity {
 
             }
         });
+        
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
