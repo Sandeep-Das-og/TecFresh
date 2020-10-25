@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="75dp"
         android:layout_marginTop="200dp"
         android:textAlignment="center"
         android:text="Discover, find and buy all types of products from your nearest and trusted shops."

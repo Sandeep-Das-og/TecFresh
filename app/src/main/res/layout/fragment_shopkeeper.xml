@@ -28,13 +28,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="  Enter your email i'd"
         android:textColor="@android:color/black"
         android:textSize="17sp"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:autofillHints="Eg. - xxx@gmail.com"/>
 
 
 
@@ -52,7 +53,8 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:inputType="number"
-        android:maxLength="5" />
+        android:maxLength="5"
+        android:autofillHints="Max length 5. For eg. - 90XXX"/>
 
 
 
@@ -68,7 +70,8 @@
         android:layout_marginRight="15dp"
         android:textSize="17sp"
         android:hint="Enter your password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:autofillHints="Enter an alphanumeric password"/>
 
 
 
@@ -79,8 +82,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
         android:padding="20dp"
         android:textAllCaps="true"
         android:textSize="18sp"
