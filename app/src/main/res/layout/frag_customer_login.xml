@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
-    tools:context=".customerFragment">
+    tools:context=".customerFragLogin">
 
     <TextView
         android:id="@+id/textView2"
@@ -63,7 +64,7 @@
         android:textAllCaps="true"
         android:textSize="18sp"
         android:background="@drawable/buttons"
-        android:text="LOGIN" />
+        android:text="Login" />
 
 
 

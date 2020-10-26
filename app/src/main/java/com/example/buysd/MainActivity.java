@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,9 +25,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent loginIntent = new Intent(MainActivity.this,userTabActivity.class);
+                Intent loginIntent = new Intent(MainActivity.this, userTabLogin.class);
 
                 startActivity(loginIntent);
+            }
+        });
+
+        joinNowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent registerIntent = new Intent(MainActivity.this, userTabRegister.class);
+
+                startActivity(registerIntent);
             }
         });
 

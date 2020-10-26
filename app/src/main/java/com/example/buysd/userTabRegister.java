@@ -2,31 +2,28 @@ package com.example.buysd;
 
 import android.os.Bundle;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class userTabActivity extends AppCompatActivity {
+public class userTabRegister extends AppCompatActivity{
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_tab);
+        setContentView(R.layout.register_ui);
 
-        TabLayout tabLayout = findViewById(R.id.tabBar);
-        TabItem customerTab = findViewById(R.id.customer_tab);
-        TabItem shopkeeperTab = findViewById(R.id.shopkeeper_tab);
+        TabLayout tabLayout = findViewById(R.id.tabBarRegister);
+        TabItem customerTab = findViewById(R.id.customer_tab_register);
+        TabItem shopkeeperTab = findViewById(R.id.shopkeeper_tab_register);
 
-        final ViewPager viewPager = findViewById(R.id.view_pager);
+        final ViewPager viewPager = findViewById(R.id.view_pager_register);
 
-        pagerAdapter PagerAdapter = new pagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        pagerAdapterRegister PagerAdapter = new pagerAdapterRegister(getSupportFragmentManager(),tabLayout.getTabCount());
 
         viewPager.setAdapter(PagerAdapter);
 
@@ -46,8 +43,6 @@ public class userTabActivity extends AppCompatActivity {
 
             }
         });
-        
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 

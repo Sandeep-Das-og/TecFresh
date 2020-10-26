@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".userTabActivity"/>
+        <activity android:name=".userTabLogin"/>
+
+        <activity android:name=".userTabRegister"/>
 
     </application>
 
