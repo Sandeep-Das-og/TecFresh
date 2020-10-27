@@ -21,6 +21,12 @@
 
         <activity android:name="com.example.TecFresh.userTabRegister"/>
 
+        <activity android:name=".customerResetPass"/>
+
+        <activity android:name=".shopkeeperResetPass"/>
+
+
+
     </application>
 
 </manifest>

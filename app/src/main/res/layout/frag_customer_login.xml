@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="Enter your email i'd"
@@ -55,9 +55,9 @@
         android:id="@+id/login_customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/forgot_pass_customer"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:padding="20dp"
@@ -66,6 +66,22 @@
         android:background="@drawable/buttons"
         android:text="Login" />
 
+
+    <TextView
+        android:id="@+id/forgot_pass_customer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/forgot_password"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:linksClickable="true"
+        android:textSize="18sp"
+        android:focusable="true" />
 
 
 </RelativeLayout>

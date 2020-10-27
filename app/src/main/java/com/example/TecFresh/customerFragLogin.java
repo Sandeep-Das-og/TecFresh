@@ -1,12 +1,18 @@
 package com.example.TecFresh;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +20,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class customerFragLogin extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +34,9 @@ public class customerFragLogin extends Fragment {
     public customerFragLogin() {
         // Required empty public constructor
     }
+
+    TextView forgotpass;
+    Button login;
 
     /**
      * Use this factory method to create a new instance of
@@ -48,12 +58,16 @@ public class customerFragLogin extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,4 +75,33 @@ public class customerFragLogin extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.frag_customer_login, container, false);
     }
+
+
+    @Override
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+
+
+        super.onViewCreated(view, savedInstanceState);
+
+      forgotpass = view.findViewById(R.id.forgot_pass_customer);
+
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), customerResetPass.class));
+            }
+        });
+
+
+        login = view.findViewById(R.id.login_customer);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), customerMain.class));
+            }
+        });
+
+    }
+
+
 }

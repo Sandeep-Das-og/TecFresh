@@ -1,12 +1,18 @@
 package com.example.TecFresh;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,10 @@ public class shopkeeperFragLogin extends Fragment {
     public shopkeeperFragLogin() {
         // Required empty public constructor
     }
+
+    TextView forgotpass;
+    Button login;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -61,4 +71,34 @@ public class shopkeeperFragLogin extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.frag_shopkeeper_login, container, false);
     }
+
+
+
+    @Override
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+
+
+        super.onViewCreated(view, savedInstanceState);
+
+        forgotpass = view.findViewById(R.id.forgot_pass_shopkeeper);
+
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), shopkeeperResetPass.class));
+            }
+        });
+
+
+        login = view.findViewById(R.id.login_shopkeeper);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), shopkeeperMain.class));
+            }
+        });
+
+    }
+
+
 }
