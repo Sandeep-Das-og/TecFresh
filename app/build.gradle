@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.buysd"
+        applicationId "com.example.TecFresh"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

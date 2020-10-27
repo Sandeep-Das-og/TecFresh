@@ -1,15 +1,17 @@
-package com.example.buysd;
+package com.example.TecFresh;
 
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class pagerAdapterLogin extends FragmentPagerAdapter {
+
+public class pagerAdapterRegister extends FragmentPagerAdapter{
+
 
     private int numOfTabs;
 
-    public pagerAdapterLogin(FragmentManager fm, int numOfTabs){
+    public pagerAdapterRegister(FragmentManager fm, int numOfTabs){
 
         super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numOfTabs = numOfTabs;
@@ -21,9 +23,9 @@ public class pagerAdapterLogin extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
-                return new customerFragLogin();
+                return new customerFragRegister();
             case 1:
-                return new shopkeeperFragLogin();
+                return new shopkeeperFragRegister();
             default:
                 return null;
         }
@@ -34,4 +36,6 @@ public class pagerAdapterLogin extends FragmentPagerAdapter {
     public int getCount() {
         return numOfTabs;
     }
+
+
 }

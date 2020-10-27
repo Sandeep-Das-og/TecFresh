@@ -1,4 +1,4 @@
-package com.example.buysd;
+package com.example.TecFresh;
 
 import org.junit.Test;
 
