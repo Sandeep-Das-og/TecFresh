@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.TecFresh">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,11 +23,15 @@
 
         <activity android:name="com.example.TecFresh.userTabRegister"/>
 
-        <activity android:name=".customerResetPass"/>
+        <activity android:name=".customerVerify"/>
 
-        <activity android:name=".shopkeeperResetPass"/>
+        <activity android:name=".shopkeeperVerify"/>
 
+        <activity android:name=".customerResetPassword"/>
 
+        <activity android:name=".customerMain"/>
+
+        <activity android:name="shopkeeperMain"/>
 
     </application>
 

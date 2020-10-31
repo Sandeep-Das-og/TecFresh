@@ -25,11 +25,11 @@
     <EditText
         android:id="@+id/set_name_customer"
         android:background="@drawable/input_design"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/textCustomerRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="Enter your name"
@@ -56,7 +56,7 @@
         android:autofillHints="Eg. - xxx@gmail.com"/>
 
     <EditText
-        android:id="@+id/set_pincode_customer"
+        android:id="@+id/set_phone_customer"
         android:background="@drawable/input_design"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,17 +66,17 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
         android:textSize="17sp"
-        android:hint="Enter 6-digit pincode"
+        android:hint="Enter mobile number"
         android:inputType="number"
-        android:maxLength="6"
-        android:autofillHints="For eg:- 700XXX"/>
+        android:maxLength="10"
+        android:autofillHints="For eg:- 9000XXXXXX"/>
 
     <EditText
         android:id="@+id/set_password_customer"
         android:background="@drawable/input_design"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/set_pincode_customer"
+        android:layout_below="@+id/set_phone_customer"
         android:padding="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
@@ -100,7 +100,6 @@
         android:textSize="18sp"
         android:background="@drawable/buttons"
         android:text="Register" />
-
 
 
 </RelativeLayout>

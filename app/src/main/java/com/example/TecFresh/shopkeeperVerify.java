@@ -5,11 +5,12 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class customerResetPass extends AppCompatActivity {
+public class shopkeeperVerify extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_reset_pass);
+        setContentView(R.layout.shopkeeper_verify);
+
     }
 }

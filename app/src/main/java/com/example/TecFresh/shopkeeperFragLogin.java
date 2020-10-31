@@ -3,14 +3,25 @@ package com.example.TecFresh;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.TecFresh.Model.usersShopkeepers;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,6 +31,9 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class shopkeeperFragLogin extends Fragment {
+
+    private EditText inputPhoneShopkeeper,inputShopIdShopkeeper,inputPasswordShopkeeper;
+    private String parentDbName = "Users";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +47,6 @@ public class shopkeeperFragLogin extends Fragment {
     public shopkeeperFragLogin() {
         // Required empty public constructor
     }
-
-    TextView forgotpass;
-    Button login;
 
 
     /**
@@ -78,27 +89,103 @@ public class shopkeeperFragLogin extends Fragment {
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
 
 
+
+
         super.onViewCreated(view, savedInstanceState);
 
+        TextView forgotpass;
         forgotpass = view.findViewById(R.id.forgot_pass_shopkeeper);
 
         forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), shopkeeperResetPass.class));
+                startActivity(new Intent(getActivity(), shopkeeperVerify.class));
             }
         });
 
+        Button login = view.findViewById(R.id.login_shopkeeper);
 
-        login = view.findViewById(R.id.login_shopkeeper);
+        inputPhoneShopkeeper = (EditText) view.findViewById(R.id.phone_shopkeeper);
+        inputShopIdShopkeeper = (EditText) view.findViewById(R.id.shop_id);
+        inputPasswordShopkeeper = (EditText) view.findViewById(R.id.password_shopkeeper);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), shopkeeperMain.class));
+                LoginShopkeeper();
+            }
+
+            private void LoginShopkeeper() {
+
+                String phone = inputPhoneShopkeeper.getText().toString();
+                String shopID = inputShopIdShopkeeper.getText().toString();
+                String password = inputPasswordShopkeeper.getText().toString();
+
+                if (TextUtils.isEmpty(phone))
+                {
+                    Toast.makeText(getActivity(), "Please enter your phone number.", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(shopID))
+                {
+                    Toast.makeText(getActivity(), "Please provide your shop registration number.", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(password))
+                {
+                    Toast.makeText(getActivity(), "Please write your password.", Toast.LENGTH_SHORT).show();
+                }
+
+                else
+                {
+                    AllowAccessToAccount(shopID, phone, password);
+                }
+
+
+            }
+
+            private void AllowAccessToAccount(final String shopID, final String phone, final String password) {
+
+                final DatabaseReference RootRef;
+                RootRef = FirebaseDatabase.getInstance().getReference("Shopkeepers");
+
+                RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+                        if (datasnapshot.child(parentDbName).child(shopID).exists()) {
+
+                            usersShopkeepers usersData1 = datasnapshot.child(parentDbName).child(shopID).getValue(usersShopkeepers.class);
+
+
+                            if (usersData1 != null && usersData1.getPhone().equals(phone)) {
+                                if (usersData1.getShopID().equals(shopID)) {
+                                    if (usersData1.getPassword().equals(password)) {
+                                        Toast.makeText(getActivity(), "Logged in Successfully.", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getActivity(), shopkeeperMain.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(getActivity(), "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(getActivity(), "Error! Shop ID and Phone number don't match.", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), "Sorry! Phone number " + " doesn't match with Shop-ID", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else{
+                            Toast.makeText(getActivity(),"Account with " + shopID + " does not exist",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
-
     }
+
 
 
 }
