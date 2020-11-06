@@ -33,6 +33,8 @@
 
         <activity android:name="shopkeeperMain"/>
 
+        <activity android:name=".shopkeeperResetPassword"/>
+
     </application>
 
 </manifest>

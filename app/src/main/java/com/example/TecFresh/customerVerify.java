@@ -60,12 +60,11 @@ public class customerVerify extends AppCompatActivity {
                 Rootref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.child("Users").child(phone).exists()){
+                        if(snapshot.child(parentDbName).child(phone).exists()){
                             usersCustomers usersData = snapshot.child(parentDbName).child(phone).getValue(usersCustomers.class);
 
                             assert usersData != null;
                             if (usersData.getPhone().equals(phone)) {
-                                Toast.makeText(customerVerify.this, "Wait for a while", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), customerResetPassword.class);
                                 intent.putExtra("EnteredNo",phone);
 
