@@ -35,6 +35,11 @@
 
         <activity android:name=".shopkeeperResetPassword"/>
 
+        <activity android:name=".addProduct"/>
+
+        <activity android:name=".shopkeeperAccountInfo"/>
+
+
     </application>
 
 </manifest>

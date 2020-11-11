@@ -157,9 +157,11 @@ public class shopkeeperFragRegister extends Fragment{
                                 {
                                     if (task.isSuccessful())
                                     {
+                                        Intent intent = new Intent(getActivity(),shopkeeperMain.class);
+                                        intent.putExtra("shopName",shopName);
+                                        Intent valAtLogin = new Intent(getActivity(),shopkeeperFragLogin.class);
+                                        valAtLogin.putExtra("shopName",shopName);
                                         Toast.makeText(getActivity(), "Your account has been created successfully !", Toast.LENGTH_SHORT).show();
-
-                                        Intent intent = new Intent(getActivity(), customerMain.class);
                                         startActivity(intent);
                                     }
                                     else

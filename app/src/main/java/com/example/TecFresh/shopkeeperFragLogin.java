@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -151,6 +152,7 @@ public class shopkeeperFragLogin extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot datasnapshot) {
 
+
                         if (datasnapshot.child(parentDbName).child(shopID).exists()) {
 
                             usersShopkeepers usersData1 = datasnapshot.child(parentDbName).child(shopID).getValue(usersShopkeepers.class);
@@ -161,6 +163,8 @@ public class shopkeeperFragLogin extends Fragment {
                                     if (usersData1.getPassword().equals(password)) {
                                         Toast.makeText(getActivity(), "Logged in Successfully.", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getActivity(), shopkeeperMain.class);
+                                        intent.putExtra("Id",shopID);
+                                        intent.putExtra("shopName",usersData1.getShopname());
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(getActivity(), "Password is incorrect.", Toast.LENGTH_SHORT).show();
@@ -185,7 +189,6 @@ public class shopkeeperFragLogin extends Fragment {
             }
         });
     }
-
 
 
 }
