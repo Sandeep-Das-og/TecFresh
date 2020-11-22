@@ -29,16 +29,17 @@
 
         <activity android:name=".customerResetPassword"/>
 
+        <activity android:name=".shopkeeperResetPassword"/>
+
         <activity android:name=".customerMain"/>
 
         <activity android:name="shopkeeperMain"/>
-
-        <activity android:name=".shopkeeperResetPassword"/>
 
         <activity android:name=".addProduct"/>
 
         <activity android:name=".shopkeeperAccountInfo"/>
 
+        <activity android:name=".categorySpecific"/>
 
     </application>
 

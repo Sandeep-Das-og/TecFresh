@@ -44,6 +44,8 @@ public class addProduct extends AppCompatActivity {
     private ImageView uploadIMG;
     private TextView productName;
     private TextView productId;
+    private TextView productPrice;
+    private TextView productDiscount;
     private Button addBtn;
     private Uri imageUri;
     private String text;
@@ -60,6 +62,8 @@ public class addProduct extends AppCompatActivity {
         addBtn = findViewById(R.id.add_product_btn);
         productName = findViewById(R.id.set_product_name);
         productId = findViewById(R.id.set_product_id);
+        productPrice = findViewById(R.id.set_product_price);
+        productDiscount = findViewById(R.id.set_product_discount);
 
         List<String> categories = new ArrayList<>();
         categories.add(0,"Choose category");
@@ -121,7 +125,8 @@ public class addProduct extends AppCompatActivity {
 
                 String pName = productName.getText().toString();
                 String pId = productId.getText().toString();
-
+                String pPrice = productPrice.getText().toString();
+                String pDisc =  productDiscount.getText().toString();
 
                 if(sFlag == 1){
                     Toast.makeText(getApplicationContext(),"Please choose a category first",Toast.LENGTH_SHORT).show();
@@ -132,16 +137,22 @@ public class addProduct extends AppCompatActivity {
                 else if(TextUtils.isEmpty(pId)){
                     Toast.makeText(getApplicationContext(),"Product Id can't be empty",Toast.LENGTH_SHORT).show();
                 }
+                else if(TextUtils.isEmpty(pPrice)){
+                    Toast.makeText(getApplicationContext(),"Price can't be empty",Toast.LENGTH_SHORT).show();
+                }
+                else if(TextUtils.isEmpty(pDisc)){
+                    Toast.makeText(getApplicationContext(),"Please set a discount value(Type 0 if discount not applicable)",Toast.LENGTH_SHORT).show();
+                }
                 else if(iFlag == 0){
                     Toast.makeText(getApplicationContext(),"Please upload an image of the product",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    uploadImage(imageUri,pName,pId);
+                    uploadImage(imageUri,pName,pId,pPrice,pDisc);
                     Toast.makeText(getApplicationContext(),"Please hold on while we do something.",Toast.LENGTH_SHORT).show();
                 }
             }
 
-            private void uploadImage(Uri imageUri, final String productName, final String productId) {
+            private void uploadImage(Uri imageUri, final String productName, final String productId, final String productPrice, final String productDisc) {
 
                 final StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
                 fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -152,7 +163,7 @@ public class addProduct extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 imageUploader model = new imageUploader(uri.toString());
-                                uploadData(model,productName,productId);
+                                uploadData(model,productName,productId,productPrice,productDisc);
                                 Toast.makeText(getApplicationContext(),"Image uploaded successfully",Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -170,7 +181,7 @@ public class addProduct extends AppCompatActivity {
                 });
             }
 
-            private void uploadData(final imageUploader model, final String productName, final String productId) {
+            private void uploadData(final imageUploader model, final String productName, final String productId,final String productPrice, final String productDisc) {
                 final DatabaseReference Rootref = FirebaseDatabase.getInstance().getReference(text);
 
                 Rootref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -180,6 +191,8 @@ public class addProduct extends AppCompatActivity {
                             HashMap<String, Object> userdataMap = new HashMap<>();
                             userdataMap.put("Product Id",productId);
                             userdataMap.put("Product Name",productName);
+                            userdataMap.put("Product Price",productPrice);
+                            userdataMap.put("Product Discount",productDisc);
                             userdataMap.put("IMG",model.getImageUrl());
                             userdataMap.put("Shop Name",getIntent().getStringExtra("sName"));
 

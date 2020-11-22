@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.TecFresh.Model.modelCategory;
-import com.google.android.gms.common.data.DataHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +19,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     private List<modelCategory> exampleList;
     private List<modelCategory> exampleListFull;
+    private RecyclerViewClickListener listener;
 
-    static class CategoryViewHolder extends RecyclerView.ViewHolder{
+    public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageView;
         TextView textView1;
 
@@ -29,12 +29,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(itemView);
             imageView = itemView.findViewById(R.id.category_image);
             textView1 = itemView.findViewById(R.id.category_name);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAdapterPosition());
         }
     }
 
-    CategoryAdapter(List<modelCategory> exampleList){
+    CategoryAdapter(List<modelCategory> exampleList,RecyclerViewClickListener listener){
         this.exampleList = exampleList;
         exampleListFull = new ArrayList<>(exampleList);
+        this.listener = listener;
     }
 
 
@@ -89,6 +96,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             notifyDataSetChanged();
         }
     };
+
+    public interface RecyclerViewClickListener{
+        void onClick(View v,int position);
+    }
 
 
 }

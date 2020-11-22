@@ -1,9 +1,11 @@
 package com.example.TecFresh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.TecFresh.Model.modelCategory;
 
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class customerMain extends AppCompatActivity {
     private Toolbar toolbar;
     private CategoryAdapter adapter;
     private List<modelCategory> exampleList;
+    private CategoryAdapter.RecyclerViewClickListener listener;
 
 
     @Override
@@ -52,12 +56,24 @@ public class customerMain extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
+        setOnClickListener();
         RecyclerView recyclerView = findViewById(R.id.category_recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter = new CategoryAdapter(exampleList);
+        adapter = new CategoryAdapter(exampleList,listener);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setOnClickListener() {
+        listener = new CategoryAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent myIntent = new Intent(getApplicationContext(),categorySpecific.class);
+                myIntent.putExtra("cName",exampleList.get(position).getText1());
+                startActivity(myIntent);
+            }
+        };
     }
 
     @Override
@@ -107,4 +123,5 @@ public class customerMain extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
