@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.TecFresh.Model.modelCategory;
+import com.example.TecFresh.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
     }
 
-    CategoryAdapter(List<modelCategory> exampleList,RecyclerViewClickListener listener){
+    public CategoryAdapter(List<modelCategory> exampleList, RecyclerViewClickListener listener){
         this.exampleList = exampleList;
         exampleListFull = new ArrayList<>(exampleList);
         this.listener = listener;

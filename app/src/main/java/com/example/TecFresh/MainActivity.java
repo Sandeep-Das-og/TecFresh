@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.TecFresh.Others.userTabLogin;
+import com.example.TecFresh.Others.userTabRegister;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button joinNowBtn, loginBtn;

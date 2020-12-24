@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Shopkeeper;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.TecFresh.Model.imageUploader;
+import com.example.TecFresh.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

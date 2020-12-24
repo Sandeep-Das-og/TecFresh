@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Shopkeeper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+
+import com.example.TecFresh.Others.helpCare;
+import com.example.TecFresh.R;
+import com.example.TecFresh.Shopkeeper.addProduct;
+import com.example.TecFresh.Shopkeeper.notifications;
+import com.example.TecFresh.Shopkeeper.receivedOrders;
+import com.example.TecFresh.Shopkeeper.shopkeeperAccountInfo;
 
 public class shopkeeperMain extends AppCompatActivity {
 
@@ -34,7 +41,7 @@ public class shopkeeperMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = getIntent().getStringExtra("shopName");
-                Intent next =  new Intent(getApplicationContext(),addProduct.class);
+                Intent next =  new Intent(getApplicationContext(), addProduct.class);
                 next.putExtra("sName",name);
                 startActivity(next);
             }
@@ -54,7 +61,7 @@ public class shopkeeperMain extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.account_info){
-            Intent newIntent = new Intent(getApplicationContext(),shopkeeperAccountInfo.class);
+            Intent newIntent = new Intent(getApplicationContext(), shopkeeperAccountInfo.class);
             newIntent.putExtra("Id",getIntent().getStringExtra("Id"));
             startActivity(newIntent);
             Toast.makeText(getApplicationContext(),"Account info",Toast.LENGTH_SHORT).show();
@@ -66,12 +73,12 @@ public class shopkeeperMain extends AppCompatActivity {
             return true;
         }
         else if(id == R.id.help){
-            startActivity(new Intent(getApplicationContext(),helpCare.class));
+            startActivity(new Intent(getApplicationContext(), helpCare.class));
             Toast.makeText(getApplicationContext(),"Contact us",Toast.LENGTH_SHORT).show();
             return true;
         }
         else{
-            startActivity(new Intent(getApplicationContext(),notifications.class));
+            startActivity(new Intent(getApplicationContext(), notifications.class));
             Toast.makeText(getApplicationContext(),"Notifications",Toast.LENGTH_SHORT).show();
         }
 

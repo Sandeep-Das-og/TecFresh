@@ -19,27 +19,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.TecFresh.userTabLogin"/>
+        <activity android:name="com.example.TecFresh.Others.userTabLogin"/>
 
-        <activity android:name="com.example.TecFresh.userTabRegister"/>
+        <activity android:name="com.example.TecFresh.Others.userTabRegister"/>
 
-        <activity android:name=".customerVerify"/>
+        <activity android:name=".Customer.customerVerify"/>
 
-        <activity android:name=".shopkeeperVerify"/>
+        <activity android:name=".Shopkeeper.shopkeeperVerify"/>
 
-        <activity android:name=".customerResetPassword"/>
+        <activity android:name=".Customer.customerResetPassword"/>
 
-        <activity android:name=".shopkeeperResetPassword"/>
+        <activity android:name=".Shopkeeper.shopkeeperResetPassword"/>
 
-        <activity android:name=".customerMain"/>
+        <activity android:name=".Customer.customerMain"/>
 
-        <activity android:name="shopkeeperMain"/>
+        <activity android:name=".Shopkeeper.shopkeeperMain"/>
 
-        <activity android:name=".addProduct"/>
+        <activity android:name=".Shopkeeper.addProduct"/>
 
-        <activity android:name=".shopkeeperAccountInfo"/>
+        <activity android:name=".Shopkeeper.shopkeeperAccountInfo"/>
 
-        <activity android:name=".categorySpecific"/>
+        <activity android:name=".Customer.categorySpecific"/>
+
+        <activity android:name=".Customer.productCard"/>
 
     </application>
 

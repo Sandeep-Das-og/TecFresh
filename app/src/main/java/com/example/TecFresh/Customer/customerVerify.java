@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.TecFresh.Model.usersCustomers;
+import com.example.TecFresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

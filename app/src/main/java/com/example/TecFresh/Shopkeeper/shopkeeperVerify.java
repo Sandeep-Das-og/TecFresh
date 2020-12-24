@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Shopkeeper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.TecFresh.Model.usersCustomers;
 import com.example.TecFresh.Model.usersShopkeepers;
+import com.example.TecFresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

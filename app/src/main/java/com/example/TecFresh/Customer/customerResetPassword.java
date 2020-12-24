@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,17 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.TecFresh.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class customerResetPassword extends AppCompatActivity {
 
@@ -66,7 +61,7 @@ public class customerResetPassword extends AppCompatActivity {
                     assert phoneNo != null;
                     Rootref.child(parentDbName).child(phoneNo).child("password").setValue(pass1);
                     Toast.makeText(customerResetPassword.this,"Password changed successfully",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),customerMain.class));
+                    startActivity(new Intent(getApplicationContext(), customerMain.class));
                 }
             }
         });

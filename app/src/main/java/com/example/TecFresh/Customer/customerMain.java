@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.TecFresh.Adapter.CategoryAdapter;
+import com.example.TecFresh.Customer.categorySpecific;
 import com.example.TecFresh.Model.modelCategory;
+import com.example.TecFresh.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +72,7 @@ public class customerMain extends AppCompatActivity {
         listener = new CategoryAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent myIntent = new Intent(getApplicationContext(),categorySpecific.class);
+                Intent myIntent = new Intent(getApplicationContext(), categorySpecific.class);
                 myIntent.putExtra("cName",exampleList.get(position).getText1());
                 startActivity(myIntent);
             }

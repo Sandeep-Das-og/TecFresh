@@ -1,6 +1,9 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Customer;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -8,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.TecFresh.Adapter.GridViewAdapter;
+import com.example.TecFresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +48,17 @@ public class categorySpecific extends AppCompatActivity {
         adapter = new GridViewAdapter(productName,productPrice,productImgURL,getApplicationContext());
         grid.setAdapter(adapter);
 
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(),productCard.class);
+                intent.putExtra("catg",category);
+                intent.putExtra("pName",productName.get(i).toString());
+                intent.putExtra("pPrice",productPrice.get(i).toString());
+                intent.putExtra("pimg",productImgURL.get(i).toString());
+                startActivity(intent);
+            }
+        });
     }
 
     private void LoadDataFromFirebase() {

@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Adapter;
 
 
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.TecFresh.R;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,7 @@ public class GridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         if(view == null) {
-            view = layoutInflater.inflate(R.layout.grid_item,viewGroup,false);
+            view = layoutInflater.inflate(R.layout.example_grid_item,viewGroup,false);
             ImageView imageProd = (ImageView) view.findViewById(R.id.product_image);
             TextView nameProd = (TextView) view.findViewById(R.id.product_name);
             TextView priceProd = (TextView) view.findViewById(R.id.product_price);

@@ -1,4 +1,4 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Shopkeeper;
 
 import android.os.Bundle;
 import android.provider.DocumentsContract;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.TecFresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

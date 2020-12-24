@@ -1,29 +1,31 @@
-package com.example.TecFresh;
+package com.example.TecFresh.Others;
 
 import android.os.Bundle;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.TecFresh.Adapter.pagerAdapterRegister;
+import com.example.TecFresh.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class userTabLogin extends AppCompatActivity {
+
+public class userTabRegister extends AppCompatActivity{
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_ui);
+        setContentView(R.layout.register_ui);
 
-        TabLayout tabLayout = findViewById(R.id.tabBarLogin);
-        TabItem customerTab = findViewById(R.id.customer_tab_login);
-        TabItem shopkeeperTab = findViewById(R.id.shopkeeper_tab_login);
+        TabLayout tabLayout = findViewById(R.id.tabBarRegister);
+        TabItem customerTab = findViewById(R.id.customer_tab_register);
+        TabItem shopkeeperTab = findViewById(R.id.shopkeeper_tab_register);
 
-        final ViewPager viewPager = findViewById(R.id.view_pager_login);
+        final ViewPager viewPager = findViewById(R.id.view_pager_register);
 
-        pagerAdapterLogin PagerAdapter = new pagerAdapterLogin(getSupportFragmentManager(),tabLayout.getTabCount());
+        pagerAdapterRegister PagerAdapter = new pagerAdapterRegister(getSupportFragmentManager(),tabLayout.getTabCount());
 
         viewPager.setAdapter(PagerAdapter);
 

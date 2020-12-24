@@ -11,7 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shopkeeperMain">
+    tools:context=".Shopkeeper.shopkeeperMain">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
