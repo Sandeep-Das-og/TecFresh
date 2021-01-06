@@ -184,11 +184,11 @@ public class addProduct extends AppCompatActivity {
 
             private void uploadData(final imageUploader model, final String productName, final String productId,final String productPrice, final String productDisc) {
                 final DatabaseReference Rootref = FirebaseDatabase.getInstance().getReference(text);
-
+                final String shopId = getIntent().getStringExtra("sID");
                 Rootref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(!(snapshot.child("Products").child(productId).exists())){
+                        if(!(snapshot.child("Products").child(shopId).exists())){
                             HashMap<String, Object> userdataMap = new HashMap<>();
                             userdataMap.put("Product Id",productId);
                             userdataMap.put("Product Name",productName);
@@ -197,7 +197,7 @@ public class addProduct extends AppCompatActivity {
                             userdataMap.put("IMG",model.getImageUrl());
                             userdataMap.put("Shop Name",getIntent().getStringExtra("sName"));
 
-                            Rootref.child("Products").child(productId).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            Rootref.child("Products").child(shopId).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){

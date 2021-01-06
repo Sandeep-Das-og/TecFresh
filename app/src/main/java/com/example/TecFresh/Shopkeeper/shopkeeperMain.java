@@ -43,6 +43,7 @@ public class shopkeeperMain extends AppCompatActivity {
                 String name = getIntent().getStringExtra("shopName");
                 Intent next =  new Intent(getApplicationContext(), addProduct.class);
                 next.putExtra("sName",name);
+                next.putExtra("sID",getIntent().getStringExtra("Id"));
                 startActivity(next);
             }
         });
