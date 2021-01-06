@@ -43,6 +43,9 @@
 
         <activity android:name=".Customer.productCard"/>
 
+        <activity android:name=".Customer.cartActivity"/>
+
+
     </application>
 
 </manifest>

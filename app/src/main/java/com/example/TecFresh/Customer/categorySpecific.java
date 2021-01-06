@@ -80,9 +80,4 @@ public class categorySpecific extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
 }

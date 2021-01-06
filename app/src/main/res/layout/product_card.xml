@@ -13,39 +13,119 @@
 
     <TextView
         android:layout_below="@id/prod_card_img"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         android:layout_marginLeft="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#686767"
-        android:textSize="18sp"
+        android:textColor="#636060"
+        android:textStyle="bold"
+        android:textSize="14sp"
         android:id="@+id/prod_card_name">
     </TextView>
+
+
 
     <TextView
         android:layout_below="@+id/prod_card_name"
         android:id="@+id/currency_holder"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rs. "
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"/>
 
     <TextView
         android:layout_below="@id/prod_card_name"
         android:layout_toRightOf="@id/currency_holder"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#000000"
         android:id="@+id/prod_card_price">
     </TextView>
+
+
+
+    <TextView
+        android:layout_below="@+id/currency_holder"
+        android:id="@+id/nameHolder"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sold by :"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_below="@id/prod_card_price"
+        android:layout_toRightOf="@id/nameHolder"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:id="@+id/prod_shop_name">
+    </TextView>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prod_id"
+        android:layout_below="@id/prod_card_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="4dp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="12sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prod_idHolder"
+        android:text="Product ID :"
+        android:layout_below="@id/prod_card_name"
+        android:layout_toLeftOf="@id/prod_id"
+        android:textColor="@android:color/black"
+        android:textSize="12sp">
+    </TextView>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shop_id"
+        android:layout_below="@id/prod_card_price"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="4dp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="12sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prod_shop_id"
+        android:text="Shop ID :"
+        android:layout_below="@id/prod_card_price"
+        android:layout_toLeftOf="@id/shop_id"
+        android:textColor="@android:color/black"
+        android:textSize="12sp">
+    </TextView>
+
+
 
     <Button
         android:background="@drawable/buttons"
