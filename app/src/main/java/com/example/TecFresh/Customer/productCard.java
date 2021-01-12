@@ -23,10 +23,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.StringCharacterIterator;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class productCard extends AppCompatActivity {
-    private String imUrl,cat,sid;
+    private String imUrl,cat;
+    private String[] id;
     private ImageView prodImg;
     private TextView prodPrice,prodName,shopName,prodId,shopId,quantity;
     private DatabaseReference Rootref;
@@ -41,9 +43,11 @@ public class productCard extends AppCompatActivity {
 
         cat = getIntent().getStringExtra("catg");
         imUrl = getIntent().getStringExtra("pimg");
-        sid = getIntent().getStringExtra("shopId");
+        HashMap<String,String> hashMap = (HashMap<String, String>)getIntent().getSerializableExtra("Id");
 
-        Rootref = FirebaseDatabase.getInstance().getReference(cat).child(sid);
+
+        assert hashMap != null;
+        Rootref = FirebaseDatabase.getInstance().getReference(cat).child(Objects.requireNonNull(hashMap.get("shopId")));
         prodImg = (ImageView) findViewById(R.id.prod_card_img);
 
         prodName = (TextView) findViewById(R.id.prod_card_name);

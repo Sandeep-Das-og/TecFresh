@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class categorySpecific extends AppCompatActivity {
@@ -31,9 +32,11 @@ public class categorySpecific extends AppCompatActivity {
     private ArrayList<String> productPrice= new ArrayList<>();
     private ArrayList<String> productImgURL= new ArrayList<>();
     private ArrayList<String> shopId= new ArrayList<>();
+    private ArrayList<String> productId = new ArrayList<>();
     private GridViewAdapter adapter;
     private String category;
     private DatabaseReference Rootref;
+    HashMap<String,String> map = new HashMap<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class categorySpecific extends AppCompatActivity {
                 intent.putExtra("pName",productName.get(i).toString());
                 intent.putExtra("pPrice",productPrice.get(i).toString());
                 intent.putExtra("pimg",productImgURL.get(i).toString());
-                intent.putExtra("shopId",shopId.get(i).toString());
+                intent.putExtra("Id",map);
                 startActivity(intent);
             }
         });
@@ -69,8 +72,7 @@ public class categorySpecific extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot product : snapshot.getChildren()) {
-                    shopId.add(product.getKey());
-
+                    map.put("shopId",product.getKey());
                     for(DataSnapshot pd : product.getChildren()) {
                         productName.add(pd.child("Product Name").getValue().toString());
                         productPrice.add(pd.child("Product Price").getValue().toString());
