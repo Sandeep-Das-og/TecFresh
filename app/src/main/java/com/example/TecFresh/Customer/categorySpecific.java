@@ -2,6 +2,7 @@ package com.example.TecFresh.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -29,6 +30,7 @@ public class categorySpecific extends AppCompatActivity {
     private ArrayList<String> productName= new ArrayList<>();
     private ArrayList<String> productPrice= new ArrayList<>();
     private ArrayList<String> productImgURL= new ArrayList<>();
+    private ArrayList<String> shopId= new ArrayList<>();
     private GridViewAdapter adapter;
     private String category;
     private DatabaseReference Rootref;
@@ -43,7 +45,7 @@ public class categorySpecific extends AppCompatActivity {
         cText = findViewById(R.id.category_text);
         cText.setText(category);
 
-        Rootref = FirebaseDatabase.getInstance().getReference(category).child("Products");
+        Rootref = FirebaseDatabase.getInstance().getReference(category);
         LoadDataFromFirebase();
         adapter = new GridViewAdapter(productName,productPrice,productImgURL,getApplicationContext());
         grid.setAdapter(adapter);
@@ -56,6 +58,7 @@ public class categorySpecific extends AppCompatActivity {
                 intent.putExtra("pName",productName.get(i).toString());
                 intent.putExtra("pPrice",productPrice.get(i).toString());
                 intent.putExtra("pimg",productImgURL.get(i).toString());
+                intent.putExtra("shopId",shopId.get(i).toString());
                 startActivity(intent);
             }
         });
@@ -66,9 +69,13 @@ public class categorySpecific extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot product : snapshot.getChildren()) {
-                    productName.add(product.child("Product Name").getValue().toString());
-                    productPrice.add(product.child("Product Price").getValue().toString());
-                    productImgURL.add(product.child("IMG").getValue().toString());
+                    shopId.add(product.getKey());
+
+                    for(DataSnapshot pd : product.getChildren()) {
+                        productName.add(pd.child("Product Name").getValue().toString());
+                        productPrice.add(pd.child("Product Price").getValue().toString());
+                        productImgURL.add(pd.child("IMG").getValue().toString());
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

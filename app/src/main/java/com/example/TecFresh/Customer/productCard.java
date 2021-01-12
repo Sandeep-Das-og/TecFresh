@@ -2,6 +2,7 @@ package com.example.TecFresh.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,7 +26,7 @@ import java.text.StringCharacterIterator;
 import java.util.Objects;
 
 public class productCard extends AppCompatActivity {
-    private String imUrl,cat;
+    private String imUrl,cat,sid;
     private ImageView prodImg;
     private TextView prodPrice,prodName,shopName,prodId,shopId,quantity;
     private DatabaseReference Rootref;
@@ -40,8 +41,9 @@ public class productCard extends AppCompatActivity {
 
         cat = getIntent().getStringExtra("catg");
         imUrl = getIntent().getStringExtra("pimg");
+        sid = getIntent().getStringExtra("shopId");
 
-        Rootref = FirebaseDatabase.getInstance().getReference(cat).child("Products");
+        Rootref = FirebaseDatabase.getInstance().getReference(cat).child(sid);
         prodImg = (ImageView) findViewById(R.id.prod_card_img);
 
         prodName = (TextView) findViewById(R.id.prod_card_name);
@@ -128,19 +130,19 @@ public class productCard extends AppCompatActivity {
     }
 
     private void SearchFirebase() {
+
         Rootref.orderByChild("IMG").equalTo(imUrl).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot product : snapshot.getChildren()){
-                    //price = product.child("Product Name").getValue().toString();
-                    //name = product.child("Product Price").getValue().toString();
-                    prodName.setText(Objects.requireNonNull(product.child("Product Name").getValue()).toString());
-                    prodPrice.setText(Objects.requireNonNull(product.child("Product Price").getValue()).toString());
-                    shopName.setText(Objects.requireNonNull(product.child("Shop Name").getValue()).toString());
-                    prodId.setText(Objects.requireNonNull(product.child("Product Id").getValue()).toString());
-                    shopId.setText(Objects.requireNonNull(product.child("Product Discount").getValue()).toString());
-                    //id = product.getKey();
-
+                        //price = product.child("Product Name").getValue().toString();
+                        //name = product.child("Product Price").getValue().toString();
+                        prodName.setText(Objects.requireNonNull(product.child("Product Name").getValue()).toString());
+                        prodPrice.setText(Objects.requireNonNull(product.child("Product Price").getValue()).toString());
+                        shopName.setText(Objects.requireNonNull(product.child("Shop Name").getValue()).toString());
+                        prodId.setText(Objects.requireNonNull(product.child("Product Id").getValue()).toString());
+                        shopId.setText(Objects.requireNonNull(product.child("Product Discount").getValue()).toString());
+                        //id = product.getKey();
                 }
             }
 
